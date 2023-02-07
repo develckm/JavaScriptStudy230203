@@ -25,16 +25,18 @@
         <li>onselect : 입력요소에 입력한 문자열을 마우스로 드래그해서 선택할 때 발생</li>
         <li>onsubmit : 폼요소에 서브밋 버튼을 누르면 폼에 양식을 제출하면서 발생</li>
     </ul>
+
+    <h2>switch 장점과 특징</h2>
+    <ul>
+        <li>가독성이 좋다.(유지보수) (if의 조건을 파악하기 어렵다.)</li>
+        <li>if문 보다 훨씬 빠르다</li>
+        <li>switch 는 기본형만 비교연산 가능 (단점)</li>
+        <li>switch 는 복잡한 조건을 사용할 수 없다.</li>
+    </ul>
     <script>
         const ex1Score=document.getElementById("ex1Score");//자동완성이 잘된다.
         console.log(ex1Score);
-        ex1Score.oninput=function (e){
-            let val=e.target.value;
-            if(isNaN(val)) {
-                e.target.value = "";
-            }
-        }
-        /*ex1Score.onchange=function (e){
+        ex1Score.onchange=function (e){
             let val=e.target.value;
             if(isNaN(val)){//수가 될 수 없으면 경고창을 띄우세요~
                 alert("수만 입력하세요!");
@@ -43,9 +45,21 @@
                 alert("0~100 사이 수만 입력하세요!");
                 e.target.value=0;
             }else{
-                ex1Grade.innerText=(gradeApp(val));
+                //개발자들이 힘쓰는 것 !! -> 코더가 안되기 위해 힘쓴다.
+                let score=Math.trunc(val/10); //99 -> 9.9 ->9
+                const gradeObj={
+                    10:"A+",
+                    9:"A",
+                    8:"B",
+                    7:"C",
+                    6:"D",
+                    5:"F",4:"F",3:"F",2:"F",1:"F",0:"F"
+                }
+                let grade=gradeObj[score];
+                grade+=((Math.round(val/10)-score)==1)?"+":"";
+                alert(grade);
             }
-        }*/
+        }
         function gradeApp(score){
            /* console.log(Math.round(score/10));//반올림
             console.log(Math.floor(score/10));//내림 -1.1 -> -2
@@ -80,7 +94,6 @@
         ex1Score.onselect=function (e){
             alert("드레그 하지 마세요!");
         }*/
-        <img src="../../../../../Library/Application Support/zoom.us/data/ggvjlq0asxgo7whftziq6q@xmpp.zoom.us/cf3fab017e465d1ef4c205c3a6e2a685c7199b11a69e1b75a78388be84bcf8c3/05544F64-D9F8-4B4C-A125-2A262B1591B9.png"/>
     </script>
 
 
