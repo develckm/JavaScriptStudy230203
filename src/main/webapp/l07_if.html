@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>if switch</title>
+    <link rel="stylesheet" href="a.css"><!--외부1 css-->
+    <link rel="stylesheet" href="a2.css"><!--외부2 css-->
+    <link rel="stylesheet" href="a3.css"><!--외부3 css-->
+
+    <style>/*내부 scc*/
+        div{}
+    </style>
 </head>
+<body></body>
+<body></body>
+<body></body>
+<!-- document.body 유일한 선택자  [body,body,body,body]??-->
 <body>
-    <h1>if 문과 switch 와 삼항 연산자 </h1>
+    <!--요소의 라인, 인라인-->
+    <h1 style="color: red">if 문과 switch 와 삼항 연산자 </h1>
     <p>쉬운 것은 없다 ㅠㅠ</p>
     <div>
         성적 입력  :
@@ -32,6 +44,22 @@
         <li>if문 보다 훨씬 빠르다</li>
         <li>switch 는 기본형만 비교연산 가능 (단점)</li>
         <li>switch 는 복잡한 조건을 사용할 수 없다.</li>
+    </ul>
+    <h2>js의 Boolean()이 true false 를 반환하는 것들 (암기!!) </h2>
+    <ul>
+        <li>null :<script>document.write(Boolean(null))</script></li>
+        <li>undefined :<script>document.write(Boolean(undefined))</script></li>
+        <li>0 :<script>document.write(Boolean(0))</script></li>
+        <li>NaN :<script>document.write(Boolean(NaN))</script></li>
+        <li>"" :<script>document.write(Boolean(""))</script>(기본형)</li>
+        <li>new String() :<script>document.write(Boolean(new String()))</script>(자료형)</li>
+        <li>[] :<script>document.write(Boolean([]))</script> (new Array(),자료형) </li>
+        <li>{} :<script>document.write(Boolean({}))</script> (new Object(),자료형)</li>
+        <li>Infinity :<script>document.write(Boolean(Infinity))</script></li>
+        <li>" " :<script>document.write(Boolean(" "))</script></li>
+        <li>1 :<script>document.write(Boolean(1))</script></li>
+        <li>11 :<script>document.write(Boolean(11))</script></li>
+        <li>-11 :<script>document.write(Boolean(-11))</script></li>
     </ul>
     <script>
         const ex1Score=document.getElementById("ex1Score");//자동완성이 잘된다.

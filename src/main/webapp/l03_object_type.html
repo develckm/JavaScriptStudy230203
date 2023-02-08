@@ -129,6 +129,7 @@
     <ul>
         <li>let pName=person.name;</li>
         <li>let pName=person["name"]; : 필드를 문자열로 호출</li>
+        <li>let pName=person."name"; (X)</li>
         <li>let age=person.10; (X) 오류 (수로 된 필드는 무조건 대괄호로 호출)</li>
         <li>let age=person[10]; (O)</li>
         <li>** 자바는 수로 된 필드를 정의할 수 없다! (js만 수로된 필드를 정의 가능)</li>
@@ -137,7 +138,7 @@
         <li>"property" in 객체 : 객체에 필드가 있는 지 검사하는 연산자 in</li>
         <li>for(let propertyName in 객체 ){} :객체에 존재하는 필드 수만큼 반복문 실행 </li>
         <li>for(let propertyName in 객체 ){ 객체.propertyName;} : (X) 오류 (문자로 된 필드는 무조건 대괄호로 호출)</li>
-        <li>for(let propertyName in 객체 ){ 객체[propertyName];} : (X) 오류 (문자로 된 필드는 무조건 대괄호로 호출)</li>
+        <li>for(let propertyName in 객체 ){ 객체[propertyName];} : (O) (문자로 된 필드는 무조건 대괄호로 호출)</li>
         2시까지 식사하고 오세요~
     </ul>
 <script>
