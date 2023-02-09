@@ -128,8 +128,6 @@
         <li>e.preventDefault() : 이벤트의 전달을 막는 함수 (이벤트버블링,양식제출)</li>
     </ul>
 <!--   5시 까지 쉬었다가 예제만 만들어 보고 쉬겠습니다~ 버블링은 모던 예습 해보세요~ -->
-
-
     <h2>모던 자바스크립트의 이벤트 예제1</h2>
     <p>요소의 속성으로 이벤트를 지정한 것과 addEventListener 를 같이 사용하면 ??</p>
     <input id="elem" type="button" value="클릭해 주세요."/>
@@ -191,8 +189,11 @@
         // }
         ex3Container.onclick=function (e){
             console.log(e);
-            //모던 자바스크립트에서 마우스 따라다니는 공 문제를 완성하세요~!
             //힌트! css 는 단위를 무조건 작성해야 한다.
+            //e.clientX :(수) 브라우저 전체 크기를 기준으로 마우스 포인트의 x축 위치
+            //e.offsetX; :(수) 노드 기준를 기준으로 마우스 포인트의 x축 위치
+            let left=40+"px";
+            //모던 자바스크립트에서 마우스 따라다니는 공 문제를 완성하세요~!
             ball.style.left="200px";
             ball.style.top="300px";
         }
