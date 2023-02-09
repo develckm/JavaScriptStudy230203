@@ -12,51 +12,114 @@
     <ul>
         <li>window : BOM Browser Object Model 브라우저정보와 전역</li>
         <li>window.document : DOM Document Object Model html 문서를 객체로 제공</li>
-        <li>DOM Tree : 문서에 존재하는 태그들을 중첩(자식)관계로 그래프를 그린 것 </li>
+        <li>DOM Tree : 문서에 존재하는 태그들을 중첩(자식)관계로 그래프(구조)를 그린 것 </li>
         <li>DOM Tree root : 모든 태그의 조상 html or body 태그</li>
         <li>DOM Tree 자식 : 해당 태그 바로 하위 중첩 태그 node>childNode</li>
         <li>DOM Tree 자손 : 해당 태그의 모든 하위 태그 node childNode</li>
         <li>DOM Tree 형제 : 해당 태그와 인접한 태그들 node~sibling</li>
         <li>DOM Tree 부모 : 해당 태그를 중첩하는 태그</li>
         <li>DOM Tree 조상 : 해당 태그를 중첩하는 태그의 부모 or 부모의 부모 or ....</li>
-        <li>css 선택자~ 암기하세요~~ !!!!!! ********</li>
     </ul>
-    <h2>node 객체에 필드로 존재하는 부모 자식 관계1</h2>
-    <p>textNode+elementNode 를 찾는 필드</p>
-    <ul>
+    <h2>node 객체에 필드로 존재하는 부모 자식 관계1 (암기 x)</h2>
+    <p>textNode+elementNode 를 찾는 필드</p><ul id="domTraveling1">
         <li>node.parentNode : 부모 노드</li>
         <li>node.childNodes : 자식 노드들 []</li>
         <li>node.firstChild : 첫번째 자식</li>
         <li>node.lastChild : 마지막 자식</li>
         <li>node.previousSibling : 인접한 이전 형제</li>
         <li>node.nextSibling : 인접한 다음 형제</li>
-    </ul>
-    <h2>node 객체에 필드로 존재하는 부모 자식 관계2</h2>
+    </ul><script>
+        //script 태그도 노드 취급당하고 객체생성 대신 실행을 한다.
+        //=> ul 객체가 실행되고 script 가 실행된다.
+
+        const domTraveling1=document.getElementById("domTraveling1");
+        console.log("자신노드",domTraveling1);
+        console.log("부모노드",domTraveling1.parentNode);
+        console.log("자식노드들",domTraveling1.childNodes);
+        console.log("첫번째자식노드",domTraveling1.firstChild);
+        console.log("마지막자식노드",domTraveling1.lastChild);
+        console.log("앞의형제노드",domTraveling1.previousSibling);
+        console.log("뒤쪽형제노드",domTraveling1.nextSibling);
+    </script>
+    <h2>node 객체에 필드로 존재하는 부모 자식 관계2 (+ 만 암기)</h2>
     <p>elementNode 를 찾는 필드</p>
     <ul id="test">
-        <li>node.parentElement : 부모 노드</li>
-        <li>node.children : 자식 노드들 []</li>
-        <li>node.firstElementChild : 첫번째 자식</li>
-        <li>node.lastElementChild : 마지막 자식</li>
-        <li>node.previousElementSibling : 인접한 이전 형제</li>
-        <li>node.nextElementSibling : 인접한 다음 형제</li>
+        <li>+ node.parentElement : 부모 노드</li>
+        <li>+ node.children : 자식 노드들 []</li>
+        <li>- node.firstElementChild : 첫번째 자식</li>
+        <li>- node.lastElementChild : 마지막 자식</li>
+        <li>- node.previousElementSibling : 인접한 이전 형제</li>
+        <li>+ node.nextElementSibling : 인접한 다음 형제</li>
     </ul>
-    <h2>document 탐색하는 함수들</h2>
+    <script> //script 태그를 요소 노드 취급한다.
+         const test=document.getElementById("test");
+         //똑같은 id가 선언되 여러 요소 중 처음 발견된 node 한개만 반환
+         //console.log(testtest); //오류
+         console.log("자신 노드",test);
+         console.log("부모 요소 노드",test.parentElement); //부모는 절대 네버 textNode 일 수 없다.
+         console.log("자식 요소 노드들",test.children);
+         console.log("첫번째 자식 요소 노드",test.firstElementChild);
+         console.log("마지막 자식 요소 노드",test.lastElementChild);
+         console.log("앞쪽 형제 요소 노드",test.previousElementSibling);
+         console.log("뒤쪽 형제 요소 노드",test.nextElementSibling);
+    </script>
+    <h2>document 탐색하는 함수들 (+ 암기)</h2>
+    <p>배열로 찾아지는 node 는 무조건 반복문으로 제어해야한다. </p>
+    <p>[node,node..].style.color="red"; (x)</p>
+    <p>node.style.color="blue"; (o)</p>
+
     <ul id="test2">
-        <li>document(node).getElementById("id") : id로 노드를 검색 (return node)</li>
-        <li>document(node).getElementsByTagName("tag") : 요소 이름으로 노드들을 검색 (return HTMLCollection)</li>
-        <li>document(node).getElementsByClassName("class") : 클래스 이름으로 노드들을 검색 (return HTMLCollection)</li>
-        <li>document.getElementsByName("name") : name 으로 노드들을 검색 (return HTMLCollection)</li>
-        <li>document(node).querySelector(css) : css 선택자로 노드를 검색 (return node)</li>
-        <li>document(node).querySelectorAll(css) : css 선택자로 노드들을 검색 (return NodeList)</li>
-        <li>(-)node.closest(css) : 해당 노드의 조상 중에 선택자와 동일한 노드가 있으면 반환(return node)</li>
-        <li>(-)document(node).matches(css) : 해상 선택자의 노드가 있는지 검색 (return boolean)</li>
-        <li>(-)node.contains(css) : 해상 선택자의 노드가 조상인지 확인 (return boolean)</li>
+        <li>+ node.getElementById("id")             => node 1개: id로 노드를 검색 </li>
+        <li>+ node.querySelector(css)               => node 1개: css 선택자로 노드를 검색 </li>
+        <li>+ node.getElementsByTagName("tag")      => [node,node,...]: 요소 이름으로 노드들을 검색 </li>
+        <li>+ node.getElementsByClassName("class")  => [node,node,...]: 클래스 이름으로 노드들을 검색 </li>
+        <li>+ node.querySelectorAll(css)            => [node,node,...]: css 선택자로 노드들을 검색 </li>
+        <li class="red">- document.getElementsByName("name") => [node,node,...]: name 으로 노드들을 검색 </li>
+        <li class="blue">- node.closest(css) => node 1개: 해당 노드의 조상 중에 선택자와 동일한 노드가 있으면 반환</li>
+        <li class="red">- node.matches(css) => node 1개: 해상 선택자의 노드가 있는지 검색 </li>
+        <li class="blue">- node.contains(css) return boolean: 해상 선택자의 노드가 조상인지 확인 </li>
     </ul>
+    <script>
+        //12까지 쉬었다가 와서 풀이하고 수업 진행하겠습니다.
+        //#test2 요소에 text-shadow 를 적용해 보세요~ (querySelector,getElementById)
+        //querySelector 는 querySelectorAll 처럼 복수의 node 를 검색 후 맨 위에 있는 것을 반환
+        //getElementById 는 id 선택자를 1개 찾는다. (복수를 우선 찾는 querySelector 보다 성능이 좋다.)
+        //#test2>.red color:red
+        //#test2>.blue color:blue
+        const test2=document.getElementById("test2");
+        //const test2=document.querySelector("#test2");
+        test2.style.textShadow="1px 1px 1.5px rgba(0,0,0,.3)";
+        //html 을 보수하다보면 중첩요소가 더 많은 중첩을 하게될 가능성이 높다. 때문에 자식 선택자보다 자손 선택자를 선호(성능하락)
+        //유지보수 : 선택자 추상적 , 성능 : 선택자를 구체화
+        const test2BlueLis=document.querySelectorAll("#test2 .blue");//querySelector~ NodeList
+        test2BlueLis.forEach((li)=>{
+            li.style.color="rgb(80,80,200)";
+        })
+        const test2RedList=test2.getElementsByClassName("red"); //ElementsBy~ HTMLCollection
+        console.log(test2RedList);
+        //HTMLCollection 은 무조건 for of(Iterator) 사용
+        for (let li of test2RedList){
+            li.style.color="rgb(200,80,80)";
+        }
+        //배열에서 Array 필드를 사용하고 싶을때 배열을 Array 파싱하는 함수
+        Array.from(test2RedList).forEach((li)=>{
+            li.style.textDecoration="underline";
+        })
+
+
+    </script>
+
+
     <h2>미리 지정되는 node 변수들</h2>
     <ul id="test3">
-        <li>id 를 정의하면 id와 동일한변수가 해당 노드를 참조</li>
-        <li>form 에 name 을 정의하면 name 과 동일한 변수가 해당 form 노드를 참조</li>
+        <li>id 를 정의하면 id와 동일한변수가 해당 노드를 참조 (getElementById 함수를 권장)
+            <ul>
+                <li>id는 document 유일한 선택자지만 여러개고 선언해도 오류가 발생하지 않는다(여러개를 선언가능)</li>
+                <li>만약 id 여러개일 때 미리 생성된 id 변수를 쓰면 배열이 참조 된다.(쓰지 않는 이유!)</li>
+                <li>없는 id를 id 변수로 참조하면 선언되지 않았다는 오류가 발생 !</li>
+            </ul>
+        </li>
+        <li>form 에 name 을 정의하면 name 과 동일한 변수가 해당 form 노드를 참조(document.forms[name] 권장)</li>
         <li>form 에 중첩된 input 요소에 name 을 작성하면 form 노드의 자식으로 참조 가능(**)</li>
         <li>form 에 중첩된 여러 input 요소에 같은 name 을 작성하면 RadioNodeList 로 반환
             (만약 type 이 radio 면 checked 된 value 가 반환된다.)
@@ -109,7 +172,7 @@
     console.log(loginFormId.state);
     //test.children;
     console.log(test3);
-    const test2=document.getElementById("test2");
+    //const test2=document.getElementById("test2");
     const test2Li=test2.getElementsByTagName("li");
     console.log(test2Li);
 </script>
@@ -210,7 +273,7 @@
     //모든 td에 마우스를 올리면(onmouseover) border 를 1px solid 로 지정하세요
     //이때 td가 속한 tr의 배경색을 lightgray 로 바꾸세요
     //마우스가 td 에서 빠져 나가면 td에 정의된 board 와 background 를 제거하세요
-    //js 기본 ?? 포기 ㅠㅠ
+
 </script>
 
 
