@@ -234,17 +234,45 @@
         #dropDownMenu{
             display: flex;
             margin-bottom: 500px;
+            list-style: none;
+            padding-left: 0;
+        }
+        #dropDownMenu>li{
+            padding: 10px 20px;
+            border: 1px solid;
+            position: relative;
         }
         #dropDownMenu .menu{
+            list-style: none;
+            box-sizing: border-box;
+            position: absolute;
             border: 1px solid;
+            padding: 0;
+            left: 0;
+            top: 40px;
+            width: 200px;
+            max-height: 0;
+            opacity: 0;
+            /*contents 높이와 상관없이 해당노드의 높이의 최대값
+             max-height : 10000px;  내요=20px 노드=20px
+             max-height : 10000px;  내요=12000px 노드=10000px
+            */
             overflow: hidden;
-            max-height: 0px;
-            transition: max-height linear 1s;
+            background-color: lightblue;
+            transition: all linear 1s;
+            /* 수치가 없는 속성은 애니메이셔너 적용이 안된다!!! (opacity,height,width)   */
+        }
+        #dropDownMenu .menu>li {
+            padding: 10px 20px;
+            border-bottom: 1px solid;
+        }
+        #dropDownMenu .menu>li>a{
+            text-decoration: none;
+            color: black;
         }
     </style>
     <h2>열렸다 닫히는 메뉴 만들기</h2>
-    <p>#dropDownMenu>li에 마우스를 올리면 li의 형제인 .menu 를 화면에 보이게 하세요</p>
-    ul#dropDownMenu>li*4>strong{대메뉴$$}+(ul.menu>(li>a[href='#']{소메뉴$$})*4)
+    <p>#dropDownMenu>li에 마우스를 올리면 li의 마지막 자식인 ul.menu 를 화면에 보이게 하세요</p>
     <ul id="dropDownMenu">
         <li><strong>대메뉴01</strong>
             <ul class="menu">
@@ -252,6 +280,7 @@
                 <li><a href="#">소메뉴02</a></li>
                 <li><a href="#">소메뉴03</a></li>
                 <li><a href="#">소메뉴04</a></li>
+                <li><a href="#">소메뉴05</a></li>
             </ul>
         </li>
         <li><strong>대메뉴02</strong>
@@ -260,6 +289,7 @@
                 <li><a href="#">소메뉴02</a></li>
                 <li><a href="#">소메뉴03</a></li>
                 <li><a href="#">소메뉴04</a></li>
+                <li><a href="#">소메뉴05</a></li>
             </ul>
         </li>
         <li><strong>대메뉴03</strong>
@@ -268,31 +298,38 @@
                 <li><a href="#">소메뉴02</a></li>
                 <li><a href="#">소메뉴03</a></li>
                 <li><a href="#">소메뉴04</a></li>
+                <li><a href="#">소메뉴05</a></li>
             </ul>
         </li>
-        <li><strong>대메뉴04</strong>
+        <li>
+            <strong>대메뉴04</strong>
             <ul class="menu">
                 <li><a href="#">소메뉴01</a></li>
                 <li><a href="#">소메뉴02</a></li>
                 <li><a href="#">소메뉴03</a></li>
                 <li><a href="#">소메뉴04</a></li>
+                <li><a href="#">소메뉴05</a></li>
             </ul>
         </li>
     </ul>
-<script>
-    const dropDownMenuLis=document.querySelectorAll("#dropDownMenu>li");
-    dropDownMenuLis.forEach((li)=>{
-        li.onmouseenter=function (e){
-            li.lastElementChild.style.height="100%";
-            li.lastElementChild.style.maxHeight="1000px";
-        }
-        li.onmouseleave=function (e){
-            li.lastElementChild.style.maxHeight="0px";
-            li.lastElementChild.style.height="0px";
-        }
+    <script>
+<!--   프론트엔드+(퍼블리싱이되는) 개발자     -->
+        const dropDownMenuLis=document.querySelectorAll("#dropDownMenu>li");
+        dropDownMenuLis.forEach((li)=>{
+            li.onmouseenter=function (e){
+                li.lastElementChild.style.height="auto";//default : 컨텐트의 높이만큼 부모의 높이가 따른다.
+                li.lastElementChild.style.maxHeight="500px";
+                li.lastElementChild.style.opacity="100%";
 
-    });
-</script>
+            }
+            li.addEventListener("mouseleave",(e)=>{
+                li.lastElementChild.style.height="0";
+                li.querySelector(".menu").style.maxHeight="0px";
+                li.lastElementChild.style.opacity="0";
 
+            });
+        });
+
+    </script>
 </body>
 </html>
