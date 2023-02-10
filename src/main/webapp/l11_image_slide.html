@@ -118,7 +118,6 @@
         imgs[prevIndex].classList.add("active");
     }
 </script>
-<hr>
 
 <style>
     .sliderContainer .container{
@@ -135,6 +134,7 @@
         list-style: none;
         justify-content: center;
         position: absolute;
+        transition: left ease-in 150ms;
     }
     .sliderContainer .images img{
         width: 250px;
@@ -174,7 +174,10 @@
         height: 0;
         font-size: xx-large;
     }
-    .sliderContainer>li:hover,.nextNavigations>li:hover{
+    .navigations>li.active{
+        background-color: lightblue;
+    }
+    .navigations>li:hover,.nextNavigations>li:hover{
         cursor: pointer;
         color: blue;
     }
@@ -206,5 +209,34 @@
         <li>6</li>
     </ul>
 </div>
+<script>
+    const imageSlider2=document.getElementById("imageSlider2");
+    const imagesContainer=imageSlider2.querySelector(".container");
+    const imagesUl=imageSlider2.querySelector(".images");
+    const imagesLis=imageSlider2.querySelectorAll(".images>li");
+    const navigationBtns=imageSlider2.querySelectorAll(".navigations>li");
+    const nextBtn2=imageSlider2.querySelector(".nextBtn");
+    const prevBtn2=imageSlider2.querySelector(".prevBtn");
+    navigationBtns.forEach((nav,navIndex)=>{
+        nav.onclick=(e)=>{
+            imgMoveHandler(navIndex);
+        }
+    })
+    imgMoveHandler(0); //화면이 로딩되면 1번 그림을 중앙으로 이동
+    function imgMoveHandler(navIndex){
+        //https://ko.javascript.info/size-and-scroll
+        //node.offsetLeft : 부모의 왼쪽을 기준으로 node 의 위치
+        let padding=(imagesContainer.clientWidth-imagesLis[navIndex].clientWidth)/2; //이미지 여백
+        imagesUl.style.left=-(imagesLis[navIndex].offsetLeft)+(padding)+"px";
+
+        navigationBtns.forEach((nav)=>{
+            nav.classList.remove("active");
+            navigationBtns[navIndex].classList.add("active")
+        })
+    }
+    nextBtn2.onclick=function (){
+    }
+
+</script>
 </body>
 </html>
