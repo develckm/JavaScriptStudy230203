@@ -54,6 +54,7 @@
 </style>
 <h1>이미지 슬라이더 만들기 1번문제</h1>
 <p>navigations 의 수를 누르면 해당 수와 동일한 위치의 이미지만 화면에 보이게 하세요!</p>
+<p>next 와 prev 버튼을 누르면 해당 이미지의 다음과 이전 이미지만 보이게 하세요!</p>
 <div id="imageSlider" class="imageContainer">
     <ul class="images">
         <li><img src="img/물총새.jpeg" alt=""></li>
@@ -76,5 +77,25 @@
         <li>6</li>
     </ul>
 </div>
+<script>
+    const imageSlider=document.getElementById("imageSlider");
+    const imgs=imageSlider.querySelectorAll(".images>li");
+    const naviBtns=imageSlider.querySelectorAll(".navigations>li");
+    naviBtns.forEach((btn,btnIndex)=>{
+        btn.onclick=(e)=>{
+            imgs.forEach((img,imgIndex)=>{
+                if(btnIndex==imgIndex){
+                    img.classList.add("active")
+                }else{
+                    img.classList.remove("active")
+                }
+            })
+        }
+    })
+
+
+</script>
+<h1></h1>
+
 </body>
 </html>
