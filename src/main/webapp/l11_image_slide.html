@@ -65,8 +65,8 @@
         <li><img src="img/참새.jpeg" alt=""></li>
     </ul>
     <ul class="nextNavigations">
-        <li><</li>
-        <li>></li>
+        <li class="prevBtn"><</li>
+        <li class="nextBtn">></li>
     </ul>
     <ul class="navigations">
         <li>1</li>
@@ -81,6 +81,9 @@
     const imageSlider=document.getElementById("imageSlider");
     const imgs=imageSlider.querySelectorAll(".images>li");
     const naviBtns=imageSlider.querySelectorAll(".navigations>li");
+    const nextBtn=imageSlider.querySelector(".nextBtn");
+    const prevBtn=imageSlider.querySelector(".prevBtn");
+
     naviBtns.forEach((btn,btnIndex)=>{
         btn.onclick=(e)=>{
             imgs.forEach((img,imgIndex)=>{
@@ -91,7 +94,30 @@
                 }
             })
         }
-    })
+    });
+   nextBtn.onclick=function (e){
+       let activeIndex=0;
+       imgs.forEach((img,i)=>{
+           if(img.classList.contains("active")){
+               activeIndex=i;
+               img.classList.remove("active");
+           }
+       });
+       let nextIndex=(activeIndex<(imgs.length-1))?activeIndex+1:imgs.length-1;
+       imgs[nextIndex].classList.add("active");
+   }
+    prevBtn.onclick=function (e){
+        let activeIndex=0;
+        imgs.forEach((img,i)=>{
+            if(img.classList.contains("active")){
+                activeIndex=i;
+                img.classList.remove("active");
+            }
+        });
+        let prevIndex=(activeIndex>0)?activeIndex-1:0;
+        imgs[prevIndex].classList.add("active");
+    }
+
 
 
 </script>
