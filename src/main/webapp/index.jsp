@@ -24,8 +24,8 @@
         <li><a href="l07_if.html">7.if,switch</a></li>
         <li><a href="l08_array_iteration.html">8.배열의 내부 반복문(Iteration)과 정렬 (const)</a></li>
         <li><a href="l09_document_traveling.html">9.document DOMTree 와 node 객체</a></li>
-        <li><a href="l10_event.html">10.event.html</a></li>
-        <li><a href="">10.JSON 과 Object</a></li>
+        <li><a href="l10_event.html">10.이벤트란?</a></li>
+        <li><a href="l11_image_slide.html">11.이미지 슬라이드 만들기</a></li>
         <li><a href="">11.브라우저 객체 window 와 document</a></li>
         <li><a href="">13.js를 참조하는 방법들 (태그,파일 (defer async))</a></li>
     </ul>
