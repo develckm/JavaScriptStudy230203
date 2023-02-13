@@ -26,8 +26,18 @@
         <li><a href="l09_document_traveling.html">9.document DOMTree 와 node 객체</a></li>
         <li><a href="l10_event.html">10.이벤트란?</a></li>
         <li><a href="l11_image_slide.html">11.이미지 슬라이드 만들기</a></li>
-        <li><a href="">11.브라우저 객체 window 와 document</a></li>
-        <li><a href="">13.js를 참조하는 방법들 (태그,파일 (defer async))</a></li>
+        <li><a href="l12_class.html">12.자바스크립트의 클래스 문법(static sugar)</a></li>
+        <li><a href="l13_getter_setter.html">13.class 의 getter setter 와 캡슐화</a></li>
+        <li><a href="l14_emp_list.do">14.자바에서 Dto 사용해 보기(Emp.List)</a></li>
+        <li><a href="">15.prototype 의 상속</a></li>
+        <li><a href="">16.함수의 binding 과 this 와 화살표 함수</a></li>
+        <li><a href="">17.타이밍 함수 setTimeout 과 setInterval(멀티스레드 new Thread)</a></li>
+        <li><a href="">18.Promise 와 Promise 화로 멀티스레드 동기화</a></li>
+        <li><a href="">19.async 함수와 Promise </a></li>
+        <li><a href="">20.Ajax 와 XMLHttpRequest 객체 </a></li>
+        <li><a href="">21.Ajax 와 fetch api 와 Promise</a></li>
+        <li><a href="">22.Ajax 와 async 함수 (js 수업 끝~)</a></li>
+        10시 5분까지 쉬었다가 오세요~
     </ul>
 
 </nav>

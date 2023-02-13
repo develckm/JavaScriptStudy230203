@@ -103,7 +103,7 @@
                img.classList.remove("active");
            }
        });
-       let nextIndex=(activeIndex<(imgs.length-1))?activeIndex+1:imgs.length-1;
+       let nextIndex=(activeIndex<(imgs.length-1))?activeIndex+1:img.length-1;
        imgs[nextIndex].classList.add("active");
    }
     prevBtn.onclick=function (e){
