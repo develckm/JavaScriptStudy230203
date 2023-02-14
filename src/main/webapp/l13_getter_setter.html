@@ -5,7 +5,7 @@
     <title>캡슐화 getter setter</title>
 </head>
 <body>
-    <h1>객체지향 문법과 캡슐화와 getter setter(디자인 패턴)</h1>
+    <h1>객체지향 문법과 캡슐화와 getter setter(디자인 패턴) 암기!</h1>
     <ul>
         <li>Bean(완두콩) : 필드를 get set 으로 캡슐화하는 모든 타입</li>
         <li>VO : Bean 인데 유효성 검사나 equals 가 구현된 타입 </li>
@@ -19,6 +19,7 @@
         class PersonDto{
             private String name; //은닉
             private boolean married;
+
             public void setName(String name){
                 this.name=name;
             }
@@ -82,10 +83,10 @@
                 this.#name=name;
                 this.#age=age;
             }
-            get name(){ //선언은 함수인데 함수가 아니다.???
+            get name(){ //선언은 함수인데 함수가 아니다.
                 return this.#name;
             }
-            set name(name){//선언은 함순인데 함수가 아니다??? ㅠㅠ
+            set name(name){//선언은 함순인데 함수가 아니다
                 this.#name=name;
             }
         }

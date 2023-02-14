@@ -47,9 +47,15 @@
         height: 0;
         font-size: xx-large;
     }
-    .navigations>li:hover,.nextNavigations>li:hover{
+    .imageContainer .navigations>li.active{
+        background-color: darkblue;
+        color: white;
+    }
+
+    .imageContainer .navigations>li:hover,.nextNavigations>li:hover{
         cursor: pointer;
-        color: blue;
+        background-color: darkslateblue;
+        color: white;
     }
 </style>
 <h1>이미지 슬라이더 만들기 1번문제</h1>
@@ -83,7 +89,6 @@
     const naviBtns=imageSlider.querySelectorAll(".navigations>li");
     const nextBtn=imageSlider.querySelector(".nextBtn");
     const prevBtn=imageSlider.querySelector(".prevBtn");
-
     naviBtns.forEach((btn,btnIndex)=>{
         btn.onclick=(e)=>{
             imgs.forEach((img,imgIndex)=>{
@@ -92,7 +97,8 @@
                 }else{
                     img.classList.remove("active")
                 }
-            })
+            });
+            removeAllAddActive(btnIndex,naviBtns);
         }
     });
    nextBtn.onclick=function (e){
@@ -103,10 +109,12 @@
                img.classList.remove("active");
            }
        });
-       let nextIndex=(activeIndex<(imgs.length-1))?activeIndex+1:img.length-1;
+       let nextIndex=(activeIndex<(imgs.length-1))?activeIndex+1:imgs.length-1;
        imgs[nextIndex].classList.add("active");
+       removeAllAddActive(activeIndex,naviBtns);
+
    }
-    prevBtn.onclick=function (e){
+   prevBtn.onclick=function (e){
         let activeIndex=0;
         imgs.forEach((img,i)=>{
             if(img.classList.contains("active")){
@@ -116,17 +124,32 @@
         });
         let prevIndex=(activeIndex>0)?activeIndex-1:0;
         imgs[prevIndex].classList.add("active");
-    }
+       removeAllAddActive(activeIndex,naviBtns);
+
+   }
+   function removeAllAddActive(index,arr){
+       arr.forEach((item,i)=>{
+           item.classList.remove("active");
+           if(index==i){
+               item.classList.add("active");
+           }
+       });
+   }
+    naviBtns[0].onclick();
+
+
 </script>
 
 <style>
     .sliderContainer .container{
         position: relative;
         width: 400px;
-        height: 230px;
+        height: 250px;
         border: 1px solid;
         margin: auto;
         overflow: hidden;
+        display: flex;
+        align-items: center;
     }
     .sliderContainer .images{
         display: flex;
@@ -136,14 +159,13 @@
         position: absolute;
         transition: left ease-in 150ms;
     }
+    .sliderContainer .images>li{
+        margin: 0 20px;
+    }
     .sliderContainer .images img{
         width: 250px;
         height: 200px;
-        margin: 0px 10px;
         object-fit: cover;
-    }
-    .sliderContainer .images li.active img{
-        display: block;
     }
     .sliderContainer .navigations{
         padding: 0;
@@ -174,10 +196,14 @@
         height: 0;
         font-size: xx-large;
     }
-    .navigations>li.active{
-        background-color: lightblue;
+    .sliderContainer .images>li.active{
+        transform: scale(1.1);
     }
-    .navigations>li:hover,.nextNavigations>li:hover{
+    .sliderContainer .navigations>li.active{
+        background-color: darkblue;
+        color: white;
+    }
+    .sliderContainer .navigations>li:hover,.nextNavigations>li:hover{
         cursor: pointer;
         color: blue;
     }
@@ -217,24 +243,33 @@
     const navigationBtns=imageSlider2.querySelectorAll(".navigations>li");
     const nextBtn2=imageSlider2.querySelector(".nextBtn");
     const prevBtn2=imageSlider2.querySelector(".prevBtn");
+    let activeIndex=0;
     navigationBtns.forEach((nav,navIndex)=>{
         nav.onclick=(e)=>{
             imgMoveHandler(navIndex);
+            activeInde=navIndex;
         }
     })
+    nextBtn2.onclick=function (e){
+        if(imagesLis.length>activeIndex+1){
+            imgMoveHandler(navIndex);
+            activeInde=navIndex;
+
+        }
+    }
+
     imgMoveHandler(0); //화면이 로딩되면 1번 그림을 중앙으로 이동
     function imgMoveHandler(navIndex){
         //https://ko.javascript.info/size-and-scroll
         //node.offsetLeft : 부모의 왼쪽을 기준으로 node 의 위치
         let padding=(imagesContainer.clientWidth-imagesLis[navIndex].clientWidth)/2; //이미지 여백
         imagesUl.style.left=-(imagesLis[navIndex].offsetLeft)+(padding)+"px";
+        removeAllAddActive(navIndex,navigationBtns);
+        removeAllAddActive(navIndex,imagesLis);
 
-        navigationBtns.forEach((nav)=>{
-            nav.classList.remove("active");
-            navigationBtns[navIndex].classList.add("active")
-        })
     }
     nextBtn2.onclick=function (){
+
     }
 
 </script>
