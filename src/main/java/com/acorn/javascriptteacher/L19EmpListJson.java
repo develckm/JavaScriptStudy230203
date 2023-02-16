@@ -22,6 +22,7 @@ public class L19EmpListJson extends HelloServlet{
         //동적 페이지는 호출할 때 내용을 바꿀 수 있는 파라미터(쿼리스트링)를 전달받을 수 있어야한다.
         //url?queryString (?key=value&key=value&....)
         //queryString 요청정보 request 에 존재하고 파라미터는 무조건 문자열이다.
+        //오류가 발생하면 톰캣이 예외 처리해서 500 이라는 상태를 반환 (서버오류!)
         String deptnoStr=request.getParameter("deptno");
 
         response.setContentType("application/json;charset=UTF-8;");
@@ -36,6 +37,7 @@ public class L19EmpListJson extends HelloServlet{
 
         List<EmpDto> empList=null;
         try {
+
             Class.forName(driver);
             conn= DriverManager.getConnection(url,user,pw);
             try {
