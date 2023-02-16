@@ -84,7 +84,5 @@ public class L14EmpList extends HttpServlet {
         empListStr+="</table>";
         out.println(empListStr);
         //java 문서가 바뀌면 class 로 컴파일하고 톰캣에 배포된 webapp 바꿔야한다. (배포!)
-        //4시 10분까지 쉬었다가 오세요~ 오류는 해결해드릴께요
-
     }
 }

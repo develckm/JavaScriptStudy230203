@@ -247,13 +247,20 @@
     navigationBtns.forEach((nav,navIndex)=>{
         nav.onclick=(e)=>{
             imgMoveHandler(navIndex);
-            activeInde=navIndex;
+            activeIndex=navIndex;
         }
     })
     nextBtn2.onclick=function (e){
-        if(imagesLis.length>activeIndex+1){
-            imgMoveHandler(navIndex);
-            activeInde=navIndex;
+        if(imagesLis.length-1>activeIndex){
+            imgMoveHandler(activeIndex+1);
+            activeIndex=activeIndex+1;
+
+        }
+    }
+    prevBtn2.onclick=function (e){
+        if(0<activeIndex){
+            imgMoveHandler(activeIndex-1);
+            activeIndex=activeIndex-1;
 
         }
     }
@@ -266,9 +273,6 @@
         imagesUl.style.left=-(imagesLis[navIndex].offsetLeft)+(padding)+"px";
         removeAllAddActive(navIndex,navigationBtns);
         removeAllAddActive(navIndex,imagesLis);
-
-    }
-    nextBtn2.onclick=function (){
 
     }
 

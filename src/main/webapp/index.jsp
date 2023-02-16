@@ -31,13 +31,16 @@
         <li><a href="l14_emp_list.do">14.자바에서 Dto 사용해 보기(Emp.List)</a></li>
         <li><a href="l15_timing_function.html">15.타이밍 함수 setTimeout 과 setInterval(멀티스레드 new Thread)</a></li>
         <li><a href="l16_this_bind.html">16.함수의 binding 과 this 와 화살표 함수</a></li>
-        <li><a href="">17.Promise 와 Promise 화로 멀티스레드 동기화</a></li>
-        <li><a href="">18.async 함수와 Promise </a></li>
-        <li><a href="">19.Ajax 와 XMLHttpRequest 객체 </a></li>
-        <li><a href="">20.Ajax 와 fetch api 와 Promise</a></li>
-        <li><a href="">21.Ajax 와 async 함수 (js 수업 끝~)</a></li>
-        <li><a href="">22.prototype 의 상속 ??</a></li>
-        10시 5분까지 쉬었다가 오세요~
+        <li><a href="l17_promise.html">17.Promise 로 멀티스레드 동기화</a></li>
+        <li><a href="l18_promise_channing.html">
+            18.Promise 체이닝과 프라미스화로 비동기 코드(멀티스레드)를 계속 동기화하기</a></li>
+        <li><a href="l19_ajax_xmlhttprequest.html">
+            19.Ajax 와 XMLHttpRequest 객체 (front+back)
+            </a>
+        </li>
+        <li><a href="l20_ajax_fetch.html">20.Ajax 와 fetch api 와 Promise</a></li>
+        <li><a href="">21.Ajax 와 async 함수 </a></li>
+        <li><a href="">22.node 생성과 추가 </a></li>
     </ul>
 
 </nav>

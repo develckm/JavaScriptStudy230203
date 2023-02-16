@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fetch API 와 AJAX</title>
+</head>
+<body>
+    <h1>Promise 화 된 비동기 통신 API fetch</h1>
+    <h2>
+        empListJson.do 와 비동기식 통신
+        <button onclick="loadEmpListJson()">로드!</button>
+    </h2>
+    <pre id="empListCont"></pre>
+<script>
+    //
+    function loadEmpListJson() {
+        fetch("empListJson.do?deptno=10",{method:"GET"})
+            .then((resp)=>{ //응답한내역 전체 (응답한내역 어떤 형식으로 처리할건지 정해야한다.)
+                //resp.text() //응답한 내역을 문자열로 처리하는 Promise 를 반환
+                return resp.json(); //응답한 내역을 문자열과 Object 로 파싱 처리하는 Promise 를 반환
+            }).then((empList)=>{
+                empListCont.innerHTML=(empList);
+            });
+    }
+</script>
+</body>
+</html>
