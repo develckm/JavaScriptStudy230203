@@ -244,27 +244,27 @@
     const nextBtn2=imageSlider2.querySelector(".nextBtn");
     const prevBtn2=imageSlider2.querySelector(".prevBtn");
     let activeIndex=0;
+    let moveInterval=null;
     navigationBtns.forEach((nav,navIndex)=>{
         nav.onclick=(e)=>{
             imgMoveHandler(navIndex);
             activeIndex=navIndex;
         }
     })
-    nextBtn2.onclick=function (e){
-        if(imagesLis.length-1>activeIndex){
-            imgMoveHandler(activeIndex+1);
-            activeIndex=activeIndex+1;
-
-        }
+    nextBtn2.onclick=()=>{
+        moveNext();
     }
-    prevBtn2.onclick=function (e){
-        if(0<activeIndex){
-            imgMoveHandler(activeIndex-1);
-            activeIndex=activeIndex-1;
-
-        }
+    prevBtn2.onclick=()=>{
+        movePrev();
     }
-
+    function moveNext(){
+        activeIndex=(imagesLis.length-1>activeIndex)?activeIndex+1:0;
+        imgMoveHandler(activeIndex);
+    }
+    function movePrev(){
+        activeIndex=(0<activeIndex)?activeIndex-1:imagesLis.length-1;
+        imgMoveHandler(activeIndex);
+    }
     imgMoveHandler(0); //화면이 로딩되면 1번 그림을 중앙으로 이동
     function imgMoveHandler(navIndex){
         //https://ko.javascript.info/size-and-scroll
@@ -273,8 +273,10 @@
         imagesUl.style.left=-(imagesLis[navIndex].offsetLeft)+(padding)+"px";
         removeAllAddActive(navIndex,navigationBtns);
         removeAllAddActive(navIndex,imagesLis);
-
     }
+    moveInterval=setInterval(()=>{
+        moveNext();
+    },5000);
 
 </script>
 </body>
